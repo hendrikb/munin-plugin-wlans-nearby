@@ -20,4 +20,4 @@ if [ $? -ne 0 ] ; then
 fi
 
 printf "wlans_nearby.value "
-echo $iwlist_scan | sed -e 's/Cell /\nCell /' | grep --count 'Cell '
+echo $iwlist_scan | sed -e 's/Cell /\nCell /g' | grep --count 'Cell '
