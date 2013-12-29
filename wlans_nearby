@@ -1,5 +1,7 @@
 #!/bin/sh
 
+wifi_interface=eth1
+
 case $1 in
    config)
         cat <<'EOM'
@@ -9,7 +11,7 @@ EOM
         exit 0;;
 esac
 
-iwlist_scan=`iwlist eth1 scan`
+iwlist_scan=`iwlist $wifi_interface scan`
 
 if [ $? -ne 0 ] ; then
   echo "Scanning for Wifi networks was not successfull. Wrong wifi interface?"
