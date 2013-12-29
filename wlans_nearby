@@ -9,5 +9,12 @@ EOM
         exit 0;;
 esac
 
+iwlist_scan=`iwlist eth1 scan`
+
+if [ $? -ne 0 ] ; then
+  echo "Scanning for Wifi networks was not successfull. Wrong wifi interface?"
+  exit 1
+fi
+
 printf "wlans_nearby.value "
-iwlist eth1 scan | grep 'Cell' | wc -l
+echo $iwlist_scan | sed -e 's/Cell /\nCell /' | grep --count 'Cell '
