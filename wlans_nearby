@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title WLAN Networks nearby
+graph_vlabel # of WLANs
+EOM
+        exit 0;;
+esac
+
+printf "wlans_nearby.value "
+iwlist eth1 scan | grep 'Cell' | wc -l
